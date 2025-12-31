@@ -1,0 +1,23 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "varlesh@gmail.com",
+                "Name": "Alexey Varfolomeev"
+            }
+        ],
+        "Category": "System Information",
+        "Description": "Shows network download and upload speed",
+        "Description[ru]": "Показывает скорость загрузки и отдачи сети",
+        "Icon": "preferences-system-network-connection",
+        "Id": "org.kde.simple.network.speed",
+        "License": "MIT",
+        "Name": "Simple Network Speed",
+        "Name[ru]": "Простой виджет скорости сети",
+        "Version": "0.1",
+        "Website": "https://github.com"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-NotificationAreaCategory": "SystemServices",
+    "KPackageStructure": "Plasma/Applet"
+}

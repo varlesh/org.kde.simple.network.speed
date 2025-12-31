@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="www.kde.org">
+    <group name="Settings">
+        <entry name="updateInterval" type="Int"><default>1</default></entry>
+        <entry name="interfaceName" type="String"><default>all</default></entry>
+    </group>
+</kcfg>
