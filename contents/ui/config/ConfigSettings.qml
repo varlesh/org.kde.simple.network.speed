@@ -30,11 +30,17 @@ KCM.SimpleKCM {
 
         QQC2.TextField {
             id: interfaceField
-            Kirigami.FormData.label: i18n("Interface:")
+            Kirigami.FormData.label: i18n("Interface(s):")
             placeholderText: "all"
-            Layout.preferredWidth: Kirigami.Units.gridUnit * 6
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 10
             Layout.alignment: Qt.AlignRight
             horizontalAlignment: Text.AlignLeft
+        }
+
+        QQC2.Label {
+            text: i18n("Use \"all\" or a comma-separated list (e.g. eth0, wlan0)")
+            font: Kirigami.Theme.smallFont
+            opacity: 0.7
         }
     }
 }

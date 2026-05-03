@@ -36,6 +36,12 @@ PlasmoidItem {
             let lines = data.stdout.split('\n');
             let totalIn = 0; let totalOut = 0;
 
+            let allowAll = root.p_interfaceName === "all";
+            let allowed = allowAll ? null : root.p_interfaceName
+                .split(',')
+                .map(s => s.trim())
+                .filter(s => s.length > 0);
+
             for (let i = 2; i < lines.length; i++) {
                 let line = lines[i].trim();
                 if (!line) continue;
@@ -45,7 +51,7 @@ PlasmoidItem {
 
                 if (iface === "lo") continue;
 
-                if (root.p_interfaceName === "all" || iface === root.p_interfaceName) {
+                if (allowAll || allowed.indexOf(iface) !== -1) {
                     totalIn += parseInt(parts[1]) || 0;
                     totalOut += parseInt(parts[9]) || 0;
                 }
