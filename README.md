@@ -12,5 +12,5 @@ Simple Plasma 6 widget shows network download and upload speed
 
 ```
 cd ~/.local/share/plasma/plasmoids
-git clone https://github.com/varlesh/org.kde.simple.network.speed
+git clone https://github.com/q77190858/org.kde.simple.network.speed
 ```
