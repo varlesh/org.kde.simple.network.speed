@@ -3,5 +3,9 @@
     <group name="Settings">
         <entry name="updateInterval" type="Int"><default>1</default></entry>
         <entry name="interfaceName" type="String"><default>all</default></entry>
+        <entry name="cpuUsage" type="String"><default>CPU:</default></entry>
+        <entry name="memUsage" type="String"><default>MEM:</default></entry>
+        <entry name="upSpeed" type="String"><default>↑</default></entry>
+        <entry name="downSpeed" type="String"><default>↓</default></entry>
     </group>
 </kcfg>

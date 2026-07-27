@@ -1,28 +1,51 @@
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls 2
 import org.kde.plasma.plasmoid
+import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.components as PlasmaComponents
 import org.kde.plasma.plasma5support as Plasma5Support
 
 PlasmoidItem {
     id: root
 
+    Plasma5Support.DataSource {
+        id: launchSystemMonitor
+        engine: "executable"
+        connectedSources: []
+        onNewData: function(sourceName, data) {
+            disconnectSource(sourceName);
+        }
+    }
+
+    Plasmoid.contextualActions: [
+        PlasmaCore.Action {
+            text: i18nc("@item","Open System Monitor")
+            icon.name: "utilities-system-monitor"
+            onTriggered: launchSystemMonitor.connectSource("kstart5 plasma-systemmonitor")
+        },
+    ]
+
     readonly property int p_updateInterval: plasmoid.configuration.updateInterval || 1
     readonly property string p_interfaceName: plasmoid.configuration.interfaceName || "all"
+    readonly property string p_cpuUsage: plasmoid.configuration.cpuUsage || "CPU:"
+    readonly property string p_memUsage: plasmoid.configuration.memUsage || "MEM:"
+    readonly property string p_upSpeed: plasmoid.configuration.upSpeed || "↑"
+    readonly property string p_downSpeed: plasmoid.configuration.downSpeed || "↓"
 
     property var lastIn: 0
     property var lastOut: 0
     property var lastCpuTotal: 0
     property var lastCpuWork: 0
     property var lastTime: 0
-    property string upText: "↑  0B/s"
-    property string downText: "↓  0B/s"
-    property string cpuText: "CPU: 0%"
-    property string memText: "MEM: 0%"
+    property string upText: p_upSpeed + "  0B/s"
+    property string downText: p_downSpeed + "  0B/s"
+    property string cpuText: p_cpuUsage + " 0%"
+    property string memText: p_memUsage + " 0%"
 
     PlasmaComponents.Label {
         id: metric
-        text: "CPU:99% ↓999M/s"
+        text: p_cpuUsage + "99% " + p_downSpeed + "999M/s"
         //font.family: "Noto Sans Mono, Noto Mono, Liberation Mono, Monospace, monospace"
         font.family: "Noto Mono"
         font.pixelSize: Math.max(8, (root.height / 2) * 0.9)
@@ -60,8 +83,8 @@ PlasmoidItem {
             let timeDiff = (currentTime - root.lastTime) / 1000;
 
             if (root.lastTime > 0 && timeDiff > 0) {
-                downText = formatSpeed((totalIn - lastIn) / timeDiff, "↓");
-                upText = formatSpeed((totalOut - lastOut) / timeDiff, "↑");
+                downText = formatSpeed((totalIn - lastIn) / timeDiff, p_downSpeed);
+                upText = formatSpeed((totalOut - lastOut) / timeDiff, p_upSpeed);
             }
 
             lastIn = totalIn;
@@ -87,7 +110,7 @@ PlasmoidItem {
             let cpuUsage = (cpuWork - lastCpuWork)/(cpuTotal - lastCpuTotal) * 100;
             if(cpuUsage >= 100) cpuUsage = 99;
             let usageText = Math.floor(cpuUsage).toString()
-            cpuText = "CPU:" + " ".repeat(2-usageText.length) + usageText + "%";
+            cpuText = p_cpuUsage + " ".repeat(2-usageText.length) + usageText + "%";
 
             lastCpuWork = cpuWork;
             lastCpuTotal = cpuTotal;
@@ -112,7 +135,7 @@ PlasmoidItem {
             let memUsage = (memTotal - memAvailable)/memTotal * 100;
             if(memUsage >= 100) memUsage = 99;
             let usageText = Math.floor(memUsage).toString()
-            memText = "MEM:" + " ".repeat(2-usageText.length) + usageText + "%";
+            memText = p_memUsage + " ".repeat(2-usageText.length) + usageText + "%";
 
             disconnectSource(sourceName);
         }
