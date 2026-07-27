@@ -7,6 +7,9 @@ Simple Plasma 6 widget shows network download and upload speed
 <p align="center">
   <img src="preview.png" alt="image"/>
 </p>
+<p align="center">
+  <img src="settings.png" alt="image"/>
+</p>
 
 ## Install
 
