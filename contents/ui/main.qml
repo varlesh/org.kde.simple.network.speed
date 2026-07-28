@@ -32,6 +32,8 @@ PlasmoidItem {
     readonly property string p_memUsage: plasmoid.configuration.memUsage || "MEM:"
     readonly property string p_upSpeed: plasmoid.configuration.upSpeed || "↑"
     readonly property string p_downSpeed: plasmoid.configuration.downSpeed || "↓"
+    readonly property string p_fontSize: plasmoid.configuration.fontSize || "12"
+    readonly property string p_fontFamily: plasmoid.configuration.fontFamily || "Noto Mono"
 
     property var lastIn: 0
     property var lastOut: 0
@@ -47,8 +49,8 @@ PlasmoidItem {
         id: metric
         text: p_cpuUsage + "99% " + p_downSpeed + "999M/s"
         //font.family: "Noto Sans Mono, Noto Mono, Liberation Mono, Monospace, monospace"
-        font.family: "Noto Mono"
-        font.pixelSize: Math.max(8, (root.height / 2) * 0.9)
+        font.family: p_fontFamily
+        font.pixelSize: parseInt(p_fontSize)
         visible: false
     }
 
@@ -198,7 +200,7 @@ PlasmoidItem {
         spacing: 0
 
         PlasmaComponents.Label {
-            text: root.cpuText+" "+root.upText
+            text: root.cpuText+root.upText
             font: metric.font
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -207,7 +209,7 @@ PlasmoidItem {
         }
 
         PlasmaComponents.Label {
-            text: root.memText+" "+root.downText
+            text: root.memText+root.downText
             font: metric.font
             Layout.fillWidth: true
             Layout.fillHeight: true

@@ -13,6 +13,8 @@ KCM.SimpleKCM {
     property alias cfg_memUsage: memUsageField.text
     property alias cfg_upSpeed: upSpeedField.text
     property alias cfg_downSpeed: downSpeedField.text
+    property alias cfg_fontSize: fontSizeField.text
+    property alias cfg_fontFamily: fontFamilyField.text
 
     property int cfg_updateIntervalDefault: 1
     property string cfg_interfaceNameDefault: "all"
@@ -20,6 +22,8 @@ KCM.SimpleKCM {
     property string cfg_memUsageDefault: "MEM:"
     property string cfg_upSpeedDefault: "↑"
     property string cfg_downSpeedDefault: "↓"
+    property string cfg_fontSizeDefault: "12"
+    property string cfg_fontFamilyDefault: "Noto Mono"
 
     Kirigami.FormLayout {
         wideMode: true
@@ -76,6 +80,22 @@ KCM.SimpleKCM {
             id: downSpeedField
             Kirigami.FormData.label: i18n("Download Speed:")
             placeholderText: "↓"
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 6
+            Layout.alignment: Qt.AlignRight
+            horizontalAlignment: Text.AlignLeft
+        }
+        QQC2.TextField {
+            id: fontSizeField
+            Kirigami.FormData.label: i18n("Font Size:")
+            placeholderText: "12"
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 6
+            Layout.alignment: Qt.AlignRight
+            horizontalAlignment: Text.AlignLeft
+        }
+        QQC2.TextField {
+            id: fontFamilyField
+            Kirigami.FormData.label: i18n("Font Family:")
+            placeholderText: "Noto Mono"
             Layout.preferredWidth: Kirigami.Units.gridUnit * 6
             Layout.alignment: Qt.AlignRight
             horizontalAlignment: Text.AlignLeft

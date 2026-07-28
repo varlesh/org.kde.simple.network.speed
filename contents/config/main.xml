@@ -7,5 +7,7 @@
         <entry name="memUsage" type="String"><default>MEM:</default></entry>
         <entry name="upSpeed" type="String"><default>↑</default></entry>
         <entry name="downSpeed" type="String"><default>↓</default></entry>
+        <entry name="fontSize" type="String"><default>12</default></entry>
+        <entry name="fontFamily" type="String"><default>Noto Mono</default></entry>
     </group>
 </kcfg>
