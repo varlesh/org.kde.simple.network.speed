@@ -4,16 +4,20 @@
             {
                 "Email": "varlesh@gmail.com",
                 "Name": "Alexey Varfolomeev"
+            },
+            {
+                "Email": "296768324@qq.com",
+                "Name": "juju"
             }
         ],
         "Category": "System Information",
-        "Description": "Shows network download and upload speed",
-        "Description[ru]": "Показывает скорость загрузки и отдачи сети",
-        "Icon": "preferences-system-network-connection",
-        "Id": "org.kde.simple.network.speed",
+        "Description": "Shows CPU and memory usage, network download and upload speed",
+        "Description[ru]": "Показывает использование CPU и памяти, скорость загрузки и отдачи сети",
+        "Icon": "utilities-system-monitor",
+        "Id": "org.kde.simple.systemmonitor",
         "License": "MIT",
-        "Name": "Simple Network Speed",
-        "Name[ru]": "Простой виджет скорости сети",
+        "Name": "Simple System Monitor",
+        "Name[ru]": "Простой монитор системы",
         "Version": "0.1",
         "Website": "https://github.com"
     },
